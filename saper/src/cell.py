@@ -50,3 +50,21 @@ class Cell(CellBase):
 
     def set_bomb(self):
         self.is_bomb = True
+
+    def increment_value(self):
+        self.value += 1
+
+    def is_clicked(self) -> bool:
+        return self.state == CellState.CLICKED
+
+    def is_state_sure_bomb(self) -> bool:
+        return self.state == CellState.SURE_BOMB
+
+    def is_state_maybe_bomb(self) -> bool:
+        return self.state == CellState.MAYBE_BOMB
+
+    def is_deactivated(self) -> bool:
+        return self.state == CellState.DEACTIVATED
+
+    def can_be_clicked(self) -> bool:
+        return not (self.is_clicked() or self.is_state_sure_bomb() or self.is_deactivated())
