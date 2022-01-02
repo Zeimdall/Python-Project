@@ -21,6 +21,11 @@ class Cell(CellBase):
         self.x = x
         self.y = y
 
+    def __repr__(self):
+        return f'    {self.value} ' \
+               f': state {self.state} ' \
+               f': is_bomb {"True" if self.is_bomb else "False"}    '
+
     def get_x(self):
         return self.x
 
