@@ -1,4 +1,4 @@
-from boardbase import BoardBase
+from src.boardbase import BoardBase
 
 
 class Board(BoardBase):

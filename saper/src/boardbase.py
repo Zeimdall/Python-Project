@@ -1,6 +1,6 @@
 import random
 
-from cell import Cell, CellState
+from src.cell import Cell, CellState
 
 
 class BoardBase:
@@ -29,6 +29,33 @@ class BoardBase:
             raise Exception('Number of bombs is not valid')
 
         return True
+
+    '''
+    Algorythm to check whether the board is won
+    '''
+
+    def is_board_win(self) -> bool:
+        bombs_detected_correctly = 0
+        for x in range(self.n):
+            for y in range(self.m):
+                cell = self.get_cell(x, y)
+                if cell.is_state_sure_bomb() and cell.is_bomb:
+                    bombs_detected_correctly += 1
+
+        if bombs_detected_correctly == self.total_set_as_bomb == self.bomb_number:
+            return True
+
+        total_open = 0
+        for x in range(self.n):
+            for y in range(self.m):
+                cell = self.get_cell(x, y)
+                if cell.is_clicked() or cell.is_deactivated():
+                    total_open += 1
+
+        if self.n * self.m - total_open == self.bomb_number:
+            return True
+
+        return False
 
     def get_cell(self, x, y) -> Cell:
         return self.board[x][y]

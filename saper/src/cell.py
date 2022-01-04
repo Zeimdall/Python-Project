@@ -1,4 +1,4 @@
-from cellbase import CellBase
+from src.cellbase import CellBase
 
 
 class CellState:
