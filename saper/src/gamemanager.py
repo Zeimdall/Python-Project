@@ -30,16 +30,20 @@ class GameManager:
         self.set_up_gui()
 
     def set_up_gui(self):
+        """settings for application's view"""
         self.window_main = Tk(className='Saper: Game')
         self.window_main.option_add('*Font', 'Times 19')
-        self.window_main.geometry("800x400")
+        self.window_main.geometry("1024x760")
 
     def gui(self):
+        """application's view"""
         def clear_frame(frame):
+            """clear widgets from a tkinter frame"""
             for widgets in frame.winfo_children():
                 widgets.destroy()
 
         def click(x, y):
+            """left mouse click"""
             self.board.click_cell(x, y)
 
             if self.board.get_cell(x, y).is_bomb:
@@ -51,6 +55,7 @@ class GameManager:
             render_game_frame()
 
         def mark(x, y):
+            """right mouse click"""
             self.board.mark_cell(x, y)
             self.board.update_total_set_as_bomb()
 
@@ -60,18 +65,21 @@ class GameManager:
             render_game_frame()
 
         def play_again():
+            """play again button"""
             self.board = None
             self.game_mode = GameMode.DEFAULT
             self.game_state = GameState.GAME
             render_game_frame()
 
         def new_game():
+            """new game button"""
             self.board = None
             self.game_mode = GameMode.DEFAULT
             self.game_state = GameState.MAIN_WINDOW
             render_main_frame()
 
         def toggle_game_mode():
+            """cheat code button"""
             if self.game_mode == GameMode.DEFAULT:
                 self.game_mode = GameMode.VISIBLE_BOMBS
             else:

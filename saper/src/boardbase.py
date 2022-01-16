@@ -75,6 +75,7 @@ class BoardBase:
                     self.total_set_as_bomb += 1
 
     def create_board(self):
+        """function creating a view of the board"""
         if not self.is_board_valid():
             raise ValueError('Board is not valid.')
 
