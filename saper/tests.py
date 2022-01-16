@@ -120,8 +120,8 @@ class tests(unittest.TestCase):
         game_manager.board.click_cell(1, 1)
         self.assertTrue(game_manager.board.get_cell(1, 2).value >= 0)
 
-    # Kliknięcie pola, wyświetla się mina, gra się kończy,
-    def test_2_state_after_click(self):
+    # Kliknięcie pola, wyświetla się mina, gra się kończy
+    def test_3_check_mine_to_game_over(self):
         game_manager = GameManager()
         game_manager.board = Board(8, 8, 12)
 
